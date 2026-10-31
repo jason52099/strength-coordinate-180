@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="优势坐标个人优势探索测评：180 道原创题目，生成前五项优势、领域分布、相对位置与个人类型报告。"
+    />
+    <meta name="theme-color" content="#f4f1e9" />
+    <title>优势坐标｜180题个人优势测评</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="paper-grid" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="优势坐标首页">
+        <span class="brand-symbol" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span class="brand-copy"><strong>优势坐标</strong><small>STRENGTHS PROFILE</small></span>
+      </a>
+      <span class="header-meta">看见你自然用力的方式</span>
+    </header>
+
+    <main class="app-shell">
+      <section class="screen intro-screen is-active" id="intro-screen" aria-labelledby="intro-title">
+        <div class="intro-main">
+          <p class="eyebrow">180 题 · 约 25–35 分钟 · 原创优势测评</p>
+          <h1 id="intro-title">找到你<br /><em>自然用力的方式</em></h1>
+          <p class="intro-lead">
+            这不是能力考试，也不是给你贴一个固定标签。它帮你看清：哪些优势最常在你身上出现，以及怎样把它们用在工作和生活里。
+          </p>
+
+          <div class="intro-stats" aria-label="测评规模">
+            <div><strong>180</strong><span>条自然状态陈述</span></div>
+            <div><strong>20</strong><span>项原创优势主题</span></div>
+            <div><strong>4</strong><span>类优势能量</span></div>
+          </div>
+
+          <div class="resume-panel" id="resume-panel" hidden>
+            <div>
+              <strong>发现上次未完成的作答</strong>
+              <span id="resume-copy"></span>
+            </div>
+            <button class="text-button" id="resume-button" type="button">继续填写</button>
+          </div>
+
+          <label class="name-field">
+            <span>怎么称呼你？<small>选填，用于生成报告称呼</small></span>
+            <input id="nickname" type="text" maxlength="16" autocomplete="nickname" placeholder="例如：小林" />
+          </label>
+
+          <button class="primary-button" id="start-button" type="button">
+            <span>开始 180 题测评</span><span class="button-arrow" aria-hidden="true">→</span>
+          </button>
+          <p class="micro-copy">
+            请按“自然状态下的你”作答，不要按你希望自己成为的样子。答案只保存在本机浏览器，不会上传。
+          </p>
+        </div>
+
+        <aside class="intro-aside" aria-label="四类优势能量">
+          <p class="aside-label">你的优势可能来自</p>
+          <div class="domain-preview">
+            <article class="domain-row domain-thinking"><span>01</span><div><h2>思考洞察</h2><p>好奇、分析、结构、创意与预见</p></div></article>
+            <article class="domain-row domain-action"><span>02</span><div><h2>行动推进</h2><p>目标、决断、专注、应变与坚持</p></div></article>
+            <article class="domain-row domain-people"><span>03</span><div><h2>连接影响</h2><p>感知、表达、协作、影响与培养</p></div></article>
+            <article class="domain-row domain-stability"><span>04</span><div><h2>稳定秩序</h2><p>责任、规划、审慎、韧性与公平</p></div></article>
+          </div>
+          <p class="aside-note">优势不是“永远正确”的答案，而是一种更自然、更省力的使用方式。</p>
+        </aside>
+      </section>
+
+      <section class="screen quiz-screen" id="quiz-screen" aria-labelledby="page-title" hidden>
+        <div class="quiz-topline">
+          <div><span id="page-count">第 1 / 18 页</span><strong id="completion-count">已完成 0 / 180</strong></div>
+          <button class="text-button" id="save-exit-button" type="button">保存并退出</button>
+        </div>
+        <div class="progress-track" id="progress-track" role="progressbar" aria-label="答题进度" aria-valuemin="0" aria-valuemax="180" aria-valuenow="0">
+          <span id="progress-fill"></span>
+        </div>
+
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">NATURAL RESPONSE</p>
+            <h2 id="page-title">本页 10 题</h2>
+          </div>
+          <p>凭第一感觉选择，不必反复斟酌。</p>
+        </div>
+
+        <div class="question-batch" id="question-batch"></div>
+
+        <div class="quiz-nav">
+          <button class="secondary-button" id="prev-button" type="button">← 上一页</button>
+          <span id="page-hint">请完成本页全部题目</span>
+          <button class="primary-button" id="next-button" type="button"><span id="next-label">下一页</span><span aria-hidden="true">→</span></button>
+        </div>
+      </section>
+
+      <section class="screen result-screen" id="result-screen" aria-labelledby="result-type" hidden>
+        <header class="result-hero">
+          <p class="eyebrow">YOUR STRENGTHS PROFILE</p>
+          <p class="result-greeting" id="result-greeting"></p>
+          <h1>你的优势坐标</h1>
+          <p class="result-type" id="result-type"></p>
+          <p class="result-lead" id="result-lead"></p>
+          <div class="signature-list" id="signature-list"></div>
+        </header>
+
+        <section class="summary-panel">
+          <div class="section-heading">
+            <div><p class="eyebrow">ENERGY MAP</p><h2>四类优势能量</h2></div>
+            <p>相对偏好，不是能力高低</p>
+          </div>
+          <div class="domain-grid" id="domain-grid"></div>
+          <p class="environment-note" id="environment-note"></p>
+        </section>
+
+        <section class="top-five-section">
+          <div class="section-heading">
+            <div><p class="eyebrow">TOP FIVE</p><h2>你的前五项优势</h2></div>
+            <p>分数与位置均相对本次作答</p>
+          </div>
+          <div class="theme-cards" id="theme-cards"></div>
+        </section>
+
+        <section class="ranking-panel">
+          <details id="ranking-details">
+            <summary><span><strong>查看完整 20 项排序</strong><small>包含主题、领域、得分和相对位置</small></span><span aria-hidden="true">＋</span></summary>
+            <div class="ranking-table" id="ranking-table"></div>
+          </details>
+        </section>
+
+        <section class="data-actions">
+          <div>
+            <p class="eyebrow">YOUR DATA</p>
+            <h2>导出答题明细</h2>
+            <p>包含题号、陈述、优势主题、所属领域、计分系数、答案和加权分，可用于 Excel 分析或交给顾问解读。</p>
+          </div>
+          <button class="secondary-button" id="download-button" type="button">下载 CSV</button>
+        </section>
+
+        <div class="result-actions">
+          <button class="primary-button" id="copy-button" type="button">复制完整报告</button>
+          <a class="secondary-button" id="contact-button" href="#" hidden>预约优势解读</a>
+          <button class="text-button restart-button" id="restart-button" type="button">重新测试</button>
+        </div>
+
+        <p class="result-disclaimer">
+          本测评为原创自我探索工具，不是 Gallup 官方测评，也不是经过常模验证的心理测验，不构成职业、医学或心理诊断。结果应作为复盘参考，不用于招聘筛选或给他人贴标签。
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer"><span id="footer-title">优势坐标 · 180题个人优势测评</span><span id="version-label">v1.0.0 · 题库 180-v1</span></footer>
+
+    <script src="bank.js"></script>
+    <script src="logic.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
