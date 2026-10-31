@@ -1,5 +1,8 @@
 # 优势坐标｜180题个人优势测评网页
 
+- 在线访问：https://jason52099.github.io/strength-coordinate-180/
+- GitHub 仓库：https://github.com/jason52099/strength-coordinate-180
+
 原创 180 题个人优势测评，与《优势坐标-180题分析与类型判定.xlsx》使用同一套题库和计分规则。
 
 > 不是 Gallup 官方测评，没有复制原站 180 道题或 34 项主题文案。
